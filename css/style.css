@@ -1,235 +1,605 @@
-/* 
+/* =========================================================
    MGO RKK Identity
-   Основные стили проекта
-*/
+   Основное оформление электронной карточки сотрудника
+   ========================================================= */
 
 
-/* Настройки всей страницы */
+/* ---------- Общие настройки ---------- */
 
-body {
-    margin: 0;
-    padding: 0;
+:root {
+    --color-background: #f3f4f6;
+    --color-card: #ffffff;
+    --color-text: #202124;
+    --color-muted: #6b7280;
+    --color-border: #e5e7eb;
+    --color-red: #d71920;
+    --color-green: #198754;
+    --color-green-background: #eaf7ef;
+    --color-warning: #b7791f;
+    --color-error: #c53030;
 
-    font-family: Arial, Helvetica, sans-serif;
-
-    background-color: #f5f6f8;
-
-    color: #1f2937;
+    --card-radius: 20px;
+    --element-radius: 12px;
+    --card-shadow: 0 18px 45px rgba(17, 24, 39, 0.11);
 }
 
 
-/* Центральная область страницы */
+* {
+    box-sizing: border-box;
+}
 
-.container {
 
+html {
+    min-width: 320px;
+    background-color: var(--color-background);
+}
+
+
+body {
+    margin: 0;
+    min-width: 320px;
+    min-height: 100vh;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    color: var(--color-text);
+    background-color: var(--color-background);
+}
+
+
+/* ---------- Основная область ---------- */
+
+.page {
     width: 100%;
     min-height: 100vh;
 
     display: flex;
-
     justify-content: center;
     align-items: center;
 
-    padding: 20px;
-
+    padding: 24px;
 }
 
 
-/* Карточка сотрудника */
+/* ---------- Карточка удостоверения ---------- */
 
-.profile-card {
-
-    width: 360px;
-    max-width: 100%;
-
-    box-sizing: border-box;
-
-    background: white;
-
-    border-radius: 18px;
-
-    padding: 25px;
-
-    box-shadow: 
-    0 10px 25px rgba(0,0,0,0.08);
-
-}h1 {
-    color: red;
-}/* Заголовок карточки */
-
-.profile-card h1 {
-
-    text-align: center;
-
-    font-size: 22px;
-
-    color: #d6001c;
-
-    margin-bottom: 25px;
-
-}
-
-
-/* Блок с фото и данными */
-
-.profile {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 20px;
-
+.identity-card {
     width: 100%;
-
-}
-
-
-/* Фотография */
-
-.photo {
-
-    width: 120px;
-
-    height: 160px;
-
-    flex-shrink: 0;
-
-    background-color: #eeeeee;
-
-    border-radius: 12px;
-
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
-
-    text-align: center;
-
-    color: #777;
-
-    font-size: 14px;
-
-}
-
-
-/* Информация о сотруднике */
-
-.person-info h2 {
-
-    margin: 0 0 10px 0;
-
-    font-size: 20px;
-
-}
-
-
-.person-info p {
-
-    margin: 0;
-
-    color: #666;
-
-}.status {
-
-    margin-top: 25px;
-
-    padding: 12px;
-
-    background-color: #e8f7ed;
-
-    color: #16803c;
-
-    border-radius: 10px;
-
-    text-align: center;
-
-    font-weight: bold;
-
-}
-
-
-/* Информационные блоки */
-
-.info {
-
-    margin-top: 20px;
-
-}
-
-
-.info p {
-
-    padding: 12px 0;
-
-    margin: 0;
-
-    border-bottom: 1px solid #eeeeee;
-
-    line-height: 1.5;
-
-}
-
-
-.info p:last-child {
-
-    border-bottom: none;
-
-}.photo img {
-
-    width: 100%;
-
-    height: 100%;
-
-    object-fit: cover;
-
-    border-radius: 12px;
-
-    display: block;
-
-}.profile-card {
+    max-width: 440px;
 
     overflow: hidden;
 
-}.person-info {
+    background-color: var(--color-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--card-radius);
 
-    flex: 1;
+    box-shadow: var(--card-shadow);
+}
 
+
+/* ---------- Верхняя часть карточки ---------- */
+
+.identity-card__header {
+    padding: 24px 24px 20px;
+    border-bottom: 1px solid var(--color-border);
+}
+
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+
+.brand__logo-placeholder {
+    width: 58px;
+    height: 58px;
+
+    flex: 0 0 58px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: 1px solid var(--color-border);
+    border-radius: 14px;
+
+    background-color: #ffffff;
+}
+
+
+.brand__cross {
+    color: var(--color-red);
+    font-size: 35px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+
+.brand__text {
     min-width: 0;
+}
 
-}/* Адаптация карточки под небольшие экраны */
 
-@media (max-width: 480px) {
+.brand__project-name {
+    margin: 0 0 5px;
 
-    .container {
-        padding: 12px;
-        box-sizing: border-box;
+    color: var(--color-red);
+
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+
+.brand__organization-name {
+    margin: 0;
+
+    color: var(--color-muted);
+
+    font-size: 13px;
+    line-height: 1.45;
+}
+
+
+/* ---------- Фото и основные данные ---------- */
+
+.employee {
+    display: flex;
+    align-items: flex-start;
+    gap: 22px;
+
+    padding: 24px;
+}
+
+
+.employee__photo-frame {
+    width: 126px;
+    height: 168px;
+
+    flex: 0 0 126px;
+
+    overflow: hidden;
+
+    border: 1px solid var(--color-border);
+    border-radius: var(--element-radius);
+
+    background-color: #f5f5f5;
+
+    box-shadow: 0 5px 16px rgba(17, 24, 39, 0.08);
+}
+
+
+.employee__photo {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+}
+
+
+.employee__summary {
+    min-width: 0;
+    padding-top: 8px;
+}
+
+
+.employee__name {
+    margin: 0 0 12px;
+
+    overflow-wrap: anywhere;
+
+    color: var(--color-text);
+
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.22;
+}
+
+
+.employee__position {
+    margin: 0;
+
+    color: var(--color-muted);
+
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+
+/* ---------- Статус удостоверения ---------- */
+
+.credential-status {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    margin: 0 24px 24px;
+    padding: 14px 16px;
+
+    border-radius: var(--element-radius);
+}
+
+
+.credential-status--active {
+    color: var(--color-green);
+    background-color: var(--color-green-background);
+}.credential-status--suspended {
+    color: #9a6700;
+    background-color: #fff4d6;
+}
+
+
+.credential-status--revoked {
+    color: #b42318;
+    background-color: #fdecea;
+}
+
+
+.credential-status--unknown {
+    color: #5f6368;
+    background-color: #f1f3f4;
+}
+
+
+.credential-status__indicator {
+    width: 11px;
+    height: 11px;
+
+    flex: 0 0 11px;
+
+    border-radius: 50%;
+    background-color: currentColor;
+
+    box-shadow: 0 0 0 4px rgba(25, 135, 84, 0.12);
+}
+
+
+.credential-status__content {
+    min-width: 0;
+}
+
+
+.credential-status__label {
+    margin: 0 0 3px;
+
+    font-size: 12px;
+    line-height: 1.3;
+    opacity: 0.78;
+}
+
+
+.credential-status__value {
+    margin: 0;
+
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.35;
+}
+
+
+/* ---------- Информационные поля ---------- */
+
+.details {
+    margin: 0 24px;
+    border-top: 1px solid var(--color-border);
+}
+
+
+.details__item {
+    padding: 16px 0;
+    border-bottom: 1px solid var(--color-border);
+}
+
+
+.details__item:last-child {
+    border-bottom: none;
+}
+
+
+.details__label {
+    margin: 0 0 6px;
+
+    color: var(--color-muted);
+
+    font-size: 12px;
+    line-height: 1.3;
+}
+
+
+.details__value {
+    margin: 0;
+
+    overflow-wrap: anywhere;
+
+    color: var(--color-text);
+
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.45;
+}
+
+
+.details__link {
+    display: inline-block;
+
+    text-decoration: none;
+}
+
+
+.details__link:hover {
+    color: var(--color-red);
+    text-decoration: underline;
+}
+
+
+/* ---------- Нижняя часть карточки ---------- */
+
+.identity-card__footer {
+    padding: 18px 24px 22px;
+
+    text-align: center;
+
+    background-color: #fafafa;
+    border-top: 1px solid var(--color-border);
+}
+
+
+.identity-card__footer-text {
+    margin: 0 0 4px;
+
+    color: var(--color-text);
+
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+
+.identity-card__footer-note {
+    margin: 0;
+
+    color: var(--color-muted);
+
+    font-size: 11px;
+    line-height: 1.4;
+}
+
+
+/* ---------- Служебные экраны ---------- */
+
+.system-message {
+    width: 100%;
+    max-width: 440px;
+}
+
+
+.system-message__card {
+    padding: 36px 28px;
+
+    text-align: center;
+
+    background-color: var(--color-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--card-radius);
+
+    box-shadow: var(--card-shadow);
+}
+
+
+.system-message__icon {
+    width: 54px;
+    height: 54px;
+
+    margin: 0 auto 18px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 50%;
+
+    font-size: 30px;
+    font-weight: 700;
+}
+
+
+.system-message__icon--warning {
+    color: var(--color-warning);
+    background-color: #fff7df;
+}
+
+
+.system-message__icon--error {
+    color: var(--color-error);
+    background-color: #fdecec;
+}
+
+
+.system-message__title {
+    margin: 0 0 12px;
+
+    font-size: 22px;
+    line-height: 1.3;
+}
+
+
+.system-message__text {
+    margin: 0;
+
+    color: var(--color-muted);
+
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+
+/* ---------- Индикатор загрузки ---------- */
+
+.loader {
+    width: 42px;
+    height: 42px;
+
+    margin: 0 auto 20px;
+
+    border: 4px solid var(--color-border);
+    border-top-color: var(--color-red);
+    border-radius: 50%;
+
+    animation: loader-spin 0.9s linear infinite;
+}
+
+
+@keyframes loader-spin {
+    to {
+        transform: rotate(360deg);
     }
+}
 
-    .profile-card {
-        width: 100%;
-        padding: 20px;
-    }
 
-    .profile {
+/* ---------- Мобильная версия ---------- */
+
+@media (max-width: 520px) {
+
+    .page {
         align-items: flex-start;
-        gap: 15px;
+        padding: 12px;
     }
 
-    .photo {
-        width: 105px;
-        height: 140px;
+
+    .identity-card {
+        max-width: none;
+        border-radius: 16px;
     }
 
-    .person-info h2 {
+
+    .identity-card__header {
+        padding: 20px 18px 17px;
+    }
+
+
+    .brand {
+        gap: 12px;
+    }
+
+
+    .brand__logo-placeholder {
+        width: 52px;
+        height: 52px;
+
+        flex-basis: 52px;
+    }
+
+
+    .brand__cross {
+        font-size: 31px;
+    }
+
+
+    .brand__project-name {
         font-size: 18px;
-        line-height: 1.25;
     }
 
-    .person-info p {
+
+    .brand__organization-name {
+        font-size: 12px;
+    }
+
+
+    .employee {
+        gap: 16px;
+        padding: 20px 18px;
+    }
+
+
+    .employee__photo-frame {
+        width: 108px;
+        height: 144px;
+
+        flex-basis: 108px;
+    }
+
+
+    .employee__summary {
+        padding-top: 4px;
+    }
+
+
+    .employee__name {
+        margin-bottom: 9px;
+
+        font-size: 20px;
+    }
+
+
+    .employee__position {
         font-size: 14px;
-        line-height: 1.4;
     }
 
+
+    .credential-status {
+        margin: 0 18px 20px;
+    }
+
+
+    .details {
+        margin: 0 18px;
+    }
+
+
+    .identity-card__footer {
+        padding-right: 18px;
+        padding-left: 18px;
+    }
+
+}
+
+
+/* ---------- Очень узкие экраны ---------- */
+
+@media (max-width: 370px) {
+
+    .employee {
+        gap: 13px;
+    }
+
+
+    .employee__photo-frame {
+        width: 96px;
+        height: 128px;
+
+        flex-basis: 96px;
+    }
+
+
+    .employee__name {
+        font-size: 18px;
+    }
+
+
+    .employee__position {
+        font-size: 13px;
+    }
+
+}/* Жесткое ограничение ширины карточки размером экрана */
+
+.identity-card {
+    width: min(440px, calc(100vw - 24px));
+    max-width: calc(100vw - 24px);
+    min-width: 0;
+}
+
+.page {
+    overflow-x: hidden;
+}
+
+body {
+    overflow-x: hidden;
 }
