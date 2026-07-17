@@ -164,8 +164,6 @@ function isCredentialExpired(expirationDate) {
 // Заполняем карточку данными сотрудника.
 
 function renderEmployee(employee) {
-}
-
     const fullName = getFullName(employee);
 
     employeeName.textContent =
@@ -176,9 +174,6 @@ function renderEmployee(employee) {
 
     employeeRole.textContent =
         employee.role || "Не указана";
-
-    employeeCredentialNumber.textContent =
-        employee.credentialNumber || "Не указан";
 
     employeeMemberNumber.textContent =
         employee.memberNumber || "Не указан";
@@ -238,7 +233,7 @@ function renderEmployee(employee) {
     employee.status,
     employee.expirationDate
 );
-
+}
 
 // Оформляем статус удостоверения.
 
