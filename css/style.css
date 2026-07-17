@@ -247,6 +247,10 @@ body {
     color: #5f6368;
     background-color: #f1f3f4;
 }
+.credential-status--expired {
+    color: #9a6700;
+    background-color: #fff4d6;
+}
 
 
 .credential-status__indicator {
@@ -283,7 +287,10 @@ body {
     font-weight: 700;
     line-height: 1.35;
 }
-
+.credential-status--expired {
+    color: #9a6700;
+    background-color: #fff4d6;
+}
 
 /* ---------- Информационные поля ---------- */
 

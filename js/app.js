@@ -127,7 +127,21 @@ function getFullName(employee) {
 
 
 // Заполняем карточку данными сотрудника.
+function isCredentialExpired(expirationDate) {
+    const parts = String(expirationDate || "").split(".");
 
+    if (parts.length !== 3) {
+        return false;
+    }
+
+    const day = Number(parts[0]);
+    const month = Number(parts[1]) - 1;
+    const year = Number(parts[2]);
+
+    const expiration = new Date(year, month, day, 23, 59, 59);
+
+    return expiration < new Date();
+}
 function renderEmployee(employee) {
     const fullName = getFullName(employee);
 
@@ -197,20 +211,33 @@ function renderEmployee(employee) {
         medicalRestrictionsItem.hidden = true;
     }
 
-    renderStatus(employee.status);
+    renderStatus(employee.status, employee.expirationDate);
 }
 
 
 // Оформляем статус удостоверения.
 
-function renderStatus(status) {
+function renderStatus(status, expirationDate) {
     credentialStatus.classList.remove(
         "credential-status--active",
         "credential-status--suspended",
         "credential-status--revoked",
-        "credential-status--unknown"
+        "credential-status--unknown",
+        "credential-status--expired",
+    );
+if (
+    status === "active" &&
+    isCredentialExpired(expirationDate)
+) {
+    credentialStatus.classList.add(
+        "credential-status--expired"
     );
 
+    credentialStatusText.textContent =
+        "Срок действия удостоверения истёк";
+
+    return;
+}
     switch (status) {
         case "active":
             credentialStatus.classList.add(
