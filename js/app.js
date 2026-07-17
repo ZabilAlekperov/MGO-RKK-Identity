@@ -126,9 +126,19 @@ function getFullName(employee) {
 }
 
 
-// Заполняем карточку данными сотрудника.
+// Проверяем срок действия удостоверения.
+// Ожидаемый формат даты: ДД.ММ.ГГГГ.
+
 function isCredentialExpired(expirationDate) {
-    const parts = String(expirationDate || "").split(".");
+    const value = String(
+        expirationDate || ""
+    ).trim();
+
+    if (!value) {
+        return false;
+    }
+
+    const parts = value.split(".");
 
     if (parts.length !== 3) {
         return false;
@@ -138,11 +148,24 @@ function isCredentialExpired(expirationDate) {
     const month = Number(parts[1]) - 1;
     const year = Number(parts[2]);
 
-    const expiration = new Date(year, month, day, 23, 59, 59);
+    const expiration = new Date(
+        year,
+        month,
+        day,
+        23,
+        59,
+        59
+    );
 
     return expiration < new Date();
 }
+
+
+// Заполняем карточку данными сотрудника.
+
 function renderEmployee(employee) {
+}
+
     const fullName = getFullName(employee);
 
     employeeName.textContent =
@@ -211,8 +234,10 @@ function renderEmployee(employee) {
         medicalRestrictionsItem.hidden = true;
     }
 
-    renderStatus(employee.status, employee.expirationDate);
-}
+    renderStatus(
+    employee.status,
+    employee.expirationDate
+);
 
 
 // Оформляем статус удостоверения.
