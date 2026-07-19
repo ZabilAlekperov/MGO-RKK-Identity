@@ -202,6 +202,7 @@ function renderEmployee(employee) {
     } else {
         employeeEmail.removeAttribute("href");
     }
+console.log(employee.photo);
 
     employeePhoto.src =
         employee.photo || APP_CONFIG.defaultPhoto;
